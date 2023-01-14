@@ -158,6 +158,10 @@ const char *g_menu_prefix[img_type_max] =
     "iso", "wim", "efi", "img", "vhd", "vtoy"
 };
 
+static const char *g_lower_chksum_name[VTOY_CHKSUM_NUM] = { "md5", "sha1", "sha256", "sha512" };
+static int g_lower_chksum_namelen[VTOY_CHKSUM_NUM] = { 3, 4, 6, 6 };
+static int g_chksum_retlen[VTOY_CHKSUM_NUM] = { 32, 40, 64, 128 };
+
 static int g_vtoy_secondary_need_recover = 0;
 
 static int g_vtoy_load_prompt = 0;
@@ -3761,13 +3765,15 @@ static grub_err_t ventoy_cmd_sel_auto_install(grub_extcmd_context_t ctxt, int ar
     g_ventoy_menu_esc = 1;
     g_ventoy_suppress_esc = 1;
     g_ventoy_suppress_esc_default = defidx;
-
+    g_ventoy_secondary_menu_on = 1;
+    
     grub_snprintf(configfile, sizeof(configfile), "configfile mem:0x%llx:size:%d", (ulonglong)(ulong)buf, pos);
     grub_script_execute_sourcecode(configfile);
     
     g_ventoy_menu_esc = 0;
     g_ventoy_suppress_esc = 0;
     g_ventoy_suppress_esc_default = 1;
+    g_ventoy_secondary_menu_on = 0;
 
     grub_free(buf);
 
@@ -3854,7 +3860,7 @@ static grub_err_t ventoy_cmd_sel_persistence(grub_extcmd_context_t ctxt, int arg
         vtoy_ssprintf(buf, pos, "set timeout=%d\n", node->timeout);        
     }
 
-    vtoy_ssprintf(buf, pos, "menuentry \"$VTLANG_NO_PERSISTENCE\" --class=\"sel_persistence\" {\n"
+    vtoy_ssprintf(buf, pos, "menuentry \"$VTLANG_NO_PERSIST\" --class=\"sel_persistence\" {\n"
                   "  echo %s\n}\n", "");
     
     for (i = 0; i < node->backendnum; i++)
@@ -3869,13 +3875,15 @@ static grub_err_t ventoy_cmd_sel_persistence(grub_extcmd_context_t ctxt, int arg
     g_ventoy_menu_esc = 1;
     g_ventoy_suppress_esc = 1;
     g_ventoy_suppress_esc_default = defidx;
-    
+    g_ventoy_secondary_menu_on = 1;
+
     grub_snprintf(configfile, sizeof(configfile), "configfile mem:0x%llx:size:%d", (ulonglong)(ulong)buf, pos);
     grub_script_execute_sourcecode(configfile);
     
     g_ventoy_menu_esc = 0;
     g_ventoy_suppress_esc = 0;
     g_ventoy_suppress_esc_default = 1;
+    g_ventoy_secondary_menu_on = 0;
 
     grub_free(buf);
 
@@ -6157,6 +6165,7 @@ static grub_err_t ventoy_cmd_show_secondary_menu(grub_extcmd_context_t ctxt, int
     }
 
     g_vtoy_secondary_need_recover = 0;
+    grub_env_unset("VTOY_SECOND_EXIT");
     grub_env_unset("VTOY_CHKSUM_FILE_PATH");
 
     env = grub_env_get("VTOY_SECONDARY_TIMEOUT");
@@ -6192,8 +6201,10 @@ static grub_err_t ventoy_cmd_show_secondary_menu(grub_extcmd_context_t ctxt, int
     }
 
     vtoy_dummy_menuentry(cmd, pos, len, "$VTLANG_FILE_CHKSUM", "second_checksum"); seldata[n++] = 5;
+    vtoy_dummy_menuentry(cmd, pos, len, "$VTLANG_RETURN_PRV_NOESC", "second_return"); seldata[n++] = 6;
 
     do {
+        grub_errno = GRUB_ERR_NONE;
         g_ventoy_menu_esc = 1;
         g_ventoy_suppress_esc = 1;
         g_ventoy_suppress_esc_default = 0;
@@ -6227,10 +6238,14 @@ static grub_err_t ventoy_cmd_show_secondary_menu(grub_extcmd_context_t ctxt, int
             grub_env_set("VTOY_CHKSUM_FILE_PATH", args[0]);
             grub_script_execute_sourcecode("configfile $vtoy_efi_part/grub/checksum.cfg");
         }
+        else if (select == 6)
+        {
+            grub_env_set("VTOY_SECOND_EXIT", "1");
+        }
     }while (select == 5);
 
     grub_free(cmd);
-    return 0;
+    VENTOY_CMD_RETURN(GRUB_ERR_NONE);
 }
 
 static grub_err_t ventoy_cmd_secondary_recover_mode(grub_extcmd_context_t ctxt, int argc, char **args)
@@ -6289,6 +6304,418 @@ static grub_err_t ventoy_cmd_load_menu_lang(grub_extcmd_context_t ctxt, int argc
     (void)argc;
 
     ventoy_plugin_load_menu_lang(0, args[0]);
+    VENTOY_CMD_RETURN(0);
+}
+
+static int ventoy_chksum_pathcmp(int chktype, char *rlpath, char *rdpath)
+{
+    char *pos1 = NULL;
+    char *pos2 = NULL;
+
+    if (chktype == 2)
+    {
+        pos1 = ventoy_str_basename(rlpath);
+        pos2 = ventoy_str_basename(rdpath);
+        return grub_strcmp(pos1, pos2);
+    }
+    else if (chktype == 3 || chktype == 4)
+    {
+        if (grub_strcmp(rlpath, rdpath) == 0 || grub_strcmp(rlpath + 1, rdpath) == 0)
+        {
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+static int ventoy_find_checksum
+(
+    grub_file_t file, 
+    const char *uname, 
+    int retlen, 
+    char *path, 
+    int chktype, 
+    char *chksum
+)
+{
+    int ulen;
+    char *pos = NULL;
+    char *pos1 = NULL;
+    char *pos2 = NULL;
+    char *buf = NULL;
+    char *currline = NULL;
+    char *nextline = NULL;
+
+    ulen = (int)grub_strlen(uname);
+
+    /* read file to buffer */
+    buf = grub_malloc(file->size + 4);
+    if (!buf)
+    {
+        return 1;
+    }
+    grub_file_read(file, buf, file->size);
+    buf[file->size] = 0;
+
+    /* parse each line */
+    for (currline = buf; currline; currline = nextline)
+    {
+        nextline = ventoy_get_line(currline);
+        VTOY_SKIP_SPACE(currline);
+
+        if (grub_strncasecmp(currline, uname, ulen) == 0)
+        {
+            pos = grub_strchr(currline, '=');
+            pos1 = grub_strchr(currline, '(');
+            pos2 = grub_strchr(currline, ')');
+            
+            if (pos && pos1 && pos2)
+            {
+                *pos2 = 0;
+                if (ventoy_chksum_pathcmp(chktype, path, pos1 + 1) == 0)
+                {
+                    VTOY_SKIP_SPACE_NEXT(pos, 1);
+                    grub_memcpy(chksum, pos, retlen);
+                    goto end;
+                }
+            }
+        }
+        else if (ventoy_str_len_alnum(currline, retlen))
+        {
+            VTOY_SKIP_SPACE_NEXT_EX(pos, currline, retlen);
+            if (ventoy_chksum_pathcmp(chktype, path, pos) == 0)
+            {
+                grub_memcpy(chksum, currline, retlen);
+                goto end;                        
+            }
+        }
+    }
+
+end:
+    grub_free(buf);
+    return 0;
+}
+
+static int ventoy_check_chkfile(const char *isopart, char *path, const char *lchkname, grub_file_t *pfile)
+{
+    int ret = 0;
+    int cnt = 0;
+    char c = 0;
+    char *pos = NULL;
+    grub_file_t file = NULL;
+
+    file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s%s.%s", isopart, path, lchkname);
+    if (file)
+    {
+        VTOY_GOTO_END(1);
+    }
+
+    cnt = ventoy_str_chrcnt(path, '/');
+    if (cnt > 1)
+    {
+        pos = grub_strrchr(path, '/');
+        c = *pos;
+        *pos = 0;
+
+        file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s%s/VENTOY_CHECKSUM", isopart, path);
+        if (file)
+        {
+            *pos = c;
+            VTOY_GOTO_END(2);
+        }
+        *pos = c;
+    }
+
+    file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s/VENTOY_CHECKSUM", isopart);
+    if (file)
+    {
+        ret = (cnt > 1) ? 3 : 4;
+    }
+
+end:
+
+    if (pfile)
+    {
+        *pfile = file;        
+    }
+    else
+    {
+        check_free(file, grub_file_close);
+    }
+    return ret;
+}
+
+static grub_err_t ventoy_cmd_cmp_checksum(grub_extcmd_context_t ctxt, int argc, char **args)
+{
+    int index = 0;
+    int chktype = 0;
+    char *pos = NULL;
+    grub_file_t file = NULL;
+    const char *calc_value = NULL;
+    const char *isopart = NULL;
+    char fchksum[64];
+    char readchk[256] = {0};
+    char filebuf[512] = {0};
+    char uchkname[16];
+
+    (void)ctxt;
+
+    index = (int)grub_strtol(args[0], NULL, 10);
+    if (argc != 2 || index < 0 || index >= VTOY_CHKSUM_NUM)
+    {
+        return 1;
+    }
+
+    grub_strncpy(uchkname, g_lower_chksum_name[index], sizeof(uchkname));
+    ventoy_str_toupper(uchkname);
+    
+    isopart = grub_env_get("vtoy_iso_part");
+    calc_value = grub_env_get("VT_LAST_CHECK_SUM");    
+
+    chktype = ventoy_check_chkfile(isopart, args[1], g_lower_chksum_name[index], &file);
+    if (chktype <= 0)
+    {
+        grub_printf("\n\nNo checksum file found.\n");
+        goto end;
+    }
+
+    if (chktype == 1)
+    {
+        grub_snprintf(fchksum, sizeof(fchksum), ".%s", g_lower_chksum_name[index]);
+        grub_memset(filebuf, 0, sizeof(filebuf));
+        grub_file_read(file, filebuf, 511);
+
+        pos = grub_strchr(filebuf, '=');
+        if (pos)
+        {
+            VTOY_SKIP_SPACE_NEXT(pos, 1);
+            grub_memcpy(readchk, pos, g_chksum_retlen[index]);
+        }
+        else
+        {
+            grub_memcpy(readchk, filebuf, g_chksum_retlen[index]);
+        }
+    }
+    else if (chktype == 3 || chktype == 4)
+    {
+        grub_snprintf(fchksum, sizeof(fchksum), "global VENTOY_CHECKSUM");
+        ventoy_find_checksum(file, uchkname, g_chksum_retlen[index], args[1], chktype, readchk);
+        if (readchk[0] == 0)
+        {
+            grub_printf("\n\n%s value not found in %s.\n", uchkname, fchksum);
+            goto end;
+        }
+    }
+    else
+    {
+        grub_snprintf(fchksum, sizeof(fchksum), "local VENTOY_CHECKSUM");
+        ventoy_find_checksum(file, uchkname, g_chksum_retlen[index], args[1], chktype, readchk);
+        if (readchk[0] == 0)
+        {
+            grub_file_close(file);
+            file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s/VENTOY_CHECKSUM", isopart);
+            if (file)
+            {
+                grub_snprintf(fchksum, sizeof(fchksum), "global VENTOY_CHECKSUM");
+                ventoy_find_checksum(file, uchkname, g_chksum_retlen[index], args[1], 3, readchk);
+                if (readchk[0] == 0)
+                {
+                    grub_printf("\n\n%s value not found in both local and global VENTOY_CHECKSUM.\n", uchkname);
+                    goto end;
+                }
+            }
+        }
+    }
+
+    if (grub_strcasecmp(calc_value, readchk) == 0)
+    {
+        grub_printf("\n\nCheck %s value with %s file.  [ SUCCESS ]\n", uchkname, fchksum);
+    }
+    else
+    {
+        grub_printf("\n\nCheck %s value with %s file.  [ ERROR ]\n", uchkname, fchksum);
+        grub_printf("The %s value in %s file is:\n%s\n", uchkname, fchksum, readchk);
+    }
+
+end:
+    grub_refresh();
+    check_free(file, grub_file_close);
+    VENTOY_CMD_RETURN(0);
+}
+
+static int ventoy_find_all_checksum
+(
+    grub_file_t file, 
+    char *path,
+    int chktype,
+    int exists[VTOY_CHKSUM_NUM],
+    int *ptotexist
+)
+{
+    int i;
+    int ulen;
+    int tot = 0;
+    char c = 0;
+    char *pos = NULL;
+    char *pos1 = NULL;
+    char *pos2 = NULL;
+    char *buf = NULL;
+    char *currline = NULL;
+    char *nextline = NULL;
+    const char *uname = NULL;
+
+    tot = *ptotexist;
+
+    /* read file to buffer */
+    buf = grub_malloc(file->size + 4);
+    if (!buf)
+    {
+        return 1;
+    }
+    grub_file_read(file, buf, file->size);
+    buf[file->size] = 0;
+
+    /* parse each line */
+    for (currline = buf; currline; currline = nextline)
+    {
+        nextline = ventoy_get_line(currline);
+        VTOY_SKIP_SPACE(currline);
+
+        for (i = 0; i < VTOY_CHKSUM_NUM; i++)
+        {
+            if (exists[i])
+            {
+                continue;
+            }
+        
+            uname = g_lower_chksum_name[i];
+            ulen = g_lower_chksum_namelen[i];
+
+            if (grub_strncasecmp(currline, uname, ulen) == 0)
+            {
+                pos = grub_strchr(currline, '=');
+                pos1 = grub_strchr(currline, '(');
+                pos2 = grub_strchr(currline, ')');
+                
+                if (pos && pos1 && pos2)
+                {
+                    c = *pos2;
+                    *pos2 = 0;
+                    if (ventoy_chksum_pathcmp(chktype, path, pos1 + 1) == 0)
+                    {
+                        exists[i] = 1;
+                        tot++;
+                    }
+                    *pos2 = c;
+                }
+            }
+            else if (ventoy_str_len_alnum(currline, g_chksum_retlen[i]))
+            {
+                VTOY_SKIP_SPACE_NEXT_EX(pos, currline, g_chksum_retlen[i]);
+                if (ventoy_chksum_pathcmp(chktype, path, pos) == 0)
+                {
+                    exists[i] = 1;
+                    tot++;
+                }
+            }
+
+            if (tot >= VTOY_CHKSUM_NUM)
+            {
+                goto end;
+            }
+        }
+    }
+
+end:
+
+    *ptotexist = tot;
+    grub_free(buf);
+    return 0;
+}
+
+static grub_err_t ventoy_cmd_vtoychksum_exist(grub_extcmd_context_t ctxt, int argc, char **args)
+{
+    int i = 0;
+    int cnt = 0;
+    char c = 0;
+    int tip = 0;
+    char *pos = NULL;
+    grub_file_t file = NULL;
+    const char *isopart = NULL;
+    int exists[VTOY_CHKSUM_NUM] = { 0, 0, 0, 0 };
+    int totexist = 0;
+
+    (void)argc;
+    (void)ctxt;
+    
+    isopart = grub_env_get("vtoy_iso_part");
+
+    for (i = 0; i < VTOY_CHKSUM_NUM; i++)
+    {
+        if (ventoy_check_file_exist("%s%s.%s", isopart, args[0], g_lower_chksum_name[i]))
+        {
+            exists[i] = 1;
+            totexist++;
+        }
+    }
+
+    if (totexist == VTOY_CHKSUM_NUM)
+    {
+        goto end;
+    }
+
+    cnt = ventoy_str_chrcnt(args[0], '/');
+    if (cnt > 1)
+    {
+        pos = grub_strrchr(args[0], '/');
+        c = *pos;
+        *pos = 0;
+        file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s%s/VENTOY_CHECKSUM", isopart, args[0]);
+        *pos = c;
+        
+        if (file)
+        {
+            if (tip == 0 && file->size > (32 * VTOY_SIZE_1KB))
+            {
+                tip = 1;
+                grub_printf("Reading checksum file...\n");
+                grub_refresh();
+            }
+        
+            debug("parse local VENTOY_CHECKSUM\n");
+            ventoy_find_all_checksum(file, args[0], 2, exists, &totexist);
+            grub_file_close(file);
+        }
+    }
+
+    if (totexist == VTOY_CHKSUM_NUM)
+    {
+        goto end;
+    }
+
+    file = ventoy_grub_file_open(VENTOY_FILE_TYPE, "%s/VENTOY_CHECKSUM", isopart);
+    if (file)
+    {
+        if (tip == 0 && file->size > (32 * VTOY_SIZE_1KB))
+        {
+            tip = 1;
+            grub_printf("Reading checksum file...\n");
+            grub_refresh();
+        }
+
+        debug("parse global VENTOY_CHECKSUM\n");
+        ventoy_find_all_checksum(file, args[0], (cnt > 1) ? 3 : 4, exists, &totexist);
+        grub_file_close(file);
+    }
+
+end:
+
+    ventoy_env_int_set("VT_EXIST_MD5", exists[0]);
+    ventoy_env_int_set("VT_EXIST_SHA1", exists[1]);
+    ventoy_env_int_set("VT_EXIST_SHA256", exists[2]);
+    ventoy_env_int_set("VT_EXIST_SHA512", exists[3]);
+
     VENTOY_CMD_RETURN(0);
 }
 
@@ -6522,6 +6949,10 @@ static cmd_para ventoy_cmds[] =
     { "vt_load_menu_lang", ventoy_cmd_load_menu_lang, 0, NULL, "", "", NULL },
     { "vt_init_menu_lang", ventoy_cmd_init_menu_lang, 0, NULL, "", "", NULL },
     { "vt_cur_menu_lang", ventoy_cmd_cur_menu_lang, 0, NULL, "", "", NULL },
+    { "vt_vtoychksum_exist", ventoy_cmd_vtoychksum_exist, 0, NULL, "", "", NULL },
+    { "vt_cmp_checksum", ventoy_cmd_cmp_checksum, 0, NULL, "", "", NULL },
+    { "vt_push_menu_lang", ventoy_cmd_push_menulang, 0, NULL, "", "", NULL },
+    { "vt_pop_menu_lang", ventoy_cmd_pop_menulang, 0, NULL, "", "", NULL },
 
 };
 

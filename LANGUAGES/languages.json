@@ -60,6 +60,7 @@
         "STR_PART_CLUSTER":"حجم الكتلة",
         "STR_PART_CLUSTER_DEFAULT":"القيمة الافتراضية للنظام",
         "STR_DONATE":"يتبرع",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
         
         "STRXXX":""
     },
@@ -124,7 +125,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Ianə",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -188,6 +190,7 @@
         "STR_PART_CLUSTER":"클러스터 크기",
         "STR_PART_CLUSTER_DEFAULT":"시스템 기본값",
         "STR_DONATE":"기부",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
         
         "STRXXX":""
     },
@@ -252,6 +255,7 @@
         "STR_PART_CLUSTER":"簇大小",
         "STR_PART_CLUSTER_DEFAULT":"系统默认值",
         "STR_DONATE":"捐助",
+        "STR_4KN_UNSUPPORTED":"目前 Ventoy 不支持原生 4K 扇区的磁盘。",
         
         "STRXXX":""
     },
@@ -316,7 +320,8 @@
         "STR_PART_CLUSTER":"Klynge størrelse",
         "STR_PART_CLUSTER_DEFAULT":"System Standard Værdi",
         "STR_DONATE":"Donering",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -380,7 +385,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donate",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -444,7 +450,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"შემოწირულობა",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX": ""
     },
     {
@@ -508,7 +515,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"اهداء",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -572,7 +580,8 @@
         "STR_PART_CLUSTER":"Wielkość klastra",
         "STR_PART_CLUSTER_DEFAULT":"Wartość domyślna systemu",
         "STR_DONATE":"Podarować",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -599,7 +608,7 @@
         "STR_INSTALL_FAILED":"Um erro ocorreu durante a instalação. Você pode reconectar o dispositivo USB e tentar novamente. Verifique o arquivo log.txt para mais detalhes.",
         "STR_UPDATE_SUCCESS":"Parabéns!#@Ventoy foi atualizado com sucesso no dispositivo.",
         "STR_UPDATE_FAILED":"Um erro ocorreu durante a atualização. Você pode reconectar o dispositivo USB e tentar novamente. Verifique o arquivo log.txt para mais detalhes.",
-        "STR_WAIT_PROCESS":"Uma thread está em execução, por favor espere...",
+        "STR_WAIT_PROCESS":"Uma tarefa está em execução, por favor espere...",
         "STR_MENU_OPTION":"Opção",
         "STR_MENU_SECURE_BOOT":"Boot seguro",
         "STR_MENU_PART_CFG":"Configuração de Partição",
@@ -613,7 +622,7 @@
         "STR_MENU_PART_STYLE":"Estilo de Partição",
         "STR_DISK_2TB_MBR_ERROR":"Por favor selecione GPT para discos maiores que 2TB",
         "STR_SHOW_ALL_DEV":"Mostrar Todos os Dispositivos",
-        "STR_PART_ALIGN_4KB":"Alinhar partições com 4KB",
+        "STR_PART_ALIGN_4KB":"Alinhar partições com 4kB",
         "STR_WEB_COMMUNICATION_ERR":"Erro de comunicação:",
         "STR_WEB_REMOTE_ABNORMAL":"Erro de comunicação: remoto anormal",
         "STR_WEB_REQUEST_TIMEOUT":"Erro de comunicação: Solicitação cronometrada",
@@ -636,7 +645,8 @@
         "STR_PART_CLUSTER":"Tamanho do cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valor padrão do sistema",
         "STR_DONATE":"Doar",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -700,7 +710,8 @@
         "STR_PART_CLUSTER":"Sektör Boyutu",
         "STR_PART_CLUSTER_DEFAULT":"Sistem varsayılan değeri",
         "STR_DONATE":"Ventoy'a Bağış yap",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -764,7 +775,8 @@
         "STR_PART_CLUSTER":"Clustergröße",
         "STR_PART_CLUSTER_DEFAULT":"Systemstandardwert",
         "STR_DONATE":"Spenden",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -828,7 +840,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donate",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -892,7 +905,8 @@
         "STR_PART_CLUSTER":"Taille de cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valeur par défaut du système",
         "STR_DONATE":"Faire un don",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -956,7 +970,8 @@
         "STR_PART_CLUSTER":"Velikost clusteru",
         "STR_PART_CLUSTER_DEFAULT":"Výchozí hodnota systému",
         "STR_DONATE":"Darovat",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1019,7 +1034,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Darovať",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1083,7 +1099,8 @@
         "STR_PART_CLUSTER":"Tamaño de cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valor predeterminado del sistema",
         "STR_DONATE":"Donar",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1147,7 +1164,8 @@
         "STR_PART_CLUSTER":"Tamaño de cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valor predeterminado del sistema",
         "STR_DONATE":"Donar",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1211,7 +1229,8 @@
         "STR_PART_CLUSTER":"Размер кластера:",
         "STR_PART_CLUSTER_DEFAULT":"Системное значение по умолчанию",
         "STR_DONATE":"Пожертвовать",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1275,7 +1294,8 @@
         "STR_PART_CLUSTER":"ক্লাস্টারের আকার",
         "STR_PART_CLUSTER_DEFAULT":"সিস্টেমের ডিফল্ট মান",
         "STR_DONATE":"দান করুন",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1339,7 +1359,8 @@
         "STR_PART_CLUSTER":"क्लस्टर साइज",
         "STR_PART_CLUSTER_DEFAULT":"सिस्टम डिफ़ॉल्ट मान",
         "STR_DONATE":"दान करें",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1403,6 +1424,7 @@
         "STR_PART_CLUSTER":"Clustergrootte",
         "STR_PART_CLUSTER_DEFAULT":"Standaardwaarde systeem",
         "STR_DONATE":"Doneer",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
         
         "STRXXX":""
     },
@@ -1467,6 +1489,7 @@
         "STR_PART_CLUSTER":"Dimensiunea clusterului",
         "STR_PART_CLUSTER_DEFAULT":"Valoarea implicită a sistemului",
         "STR_DONATE":"Donează",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
         
         "STRXXX":""
     },
@@ -1531,14 +1554,15 @@
         "STR_PART_CLUSTER":"クラスターサイズ",
         "STR_PART_CLUSTER_DEFAULT":"システムのデフォルト値",
         "STR_DONATE":"寄付",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
         "name":"Italian (Italiano)",
         "FontFamily":"Courier New",
         "FontSize":16,
-        "Author":"AverageUser2,Albano Battistella,bovirus",
+        "Author":"AverageUser2,Albano Battistella,bovirus,passero",
         
         "STR_ERROR":"Errore",
         "STR_WARNING":"Attenzione",
@@ -1555,22 +1579,22 @@
         "STR_INSTALL_TIP":"Il dispositivo verrà formattato e tutti i dati saranno persi.#@Vuoi continuare?",
         "STR_INSTALL_TIP2":"Il dispositivo verrà formattato e tutti i dati saranno persi.#@Vuoi continuare (seconda verifica)?",
         "STR_INSTALL_SUCCESS":"Congratulazioni!#@Installazione di Ventoy nel dispositivo completata.",
-        "STR_INSTALL_FAILED":"Si è verificato un errore durante l'installazione.#@Riconnetti il dispositivo e riprova.#@Per i dettagli controlla il file log.txt .",
+        "STR_INSTALL_FAILED":"Si è verificato un errore durante l'installazione.#@Riconnetti il dispositivo e riprova.#@Controlla il file log.txt per i dettagli.",
         "STR_UPDATE_SUCCESS":"Congratulazioni!#@Aggiornamento di Ventoy nel dispositivo completato",
-        "STR_UPDATE_FAILED":"Si è verificato un errore durante l'aggiornamento.#@Riconnetti il dispositivo e riprova.#@Per i dettagli controlla il file log.txt.",
+        "STR_UPDATE_FAILED":"Si è verificato un errore durante l'aggiornamento.#@È possibile reinserire il dispositivo USB e riprovare.#@Controlla il file log.txt per i dettagli. Se l'aggiornamento non va a buon fine, consulta le FAQ sul sito ufficiale",
         "STR_WAIT_PROCESS":"Un processo è in esecuzione. Attendi...",
         "STR_MENU_OPTION":"Opzioni",
         "STR_MENU_SECURE_BOOT":"Avvio protetto (secure boot)",
         "STR_MENU_PART_CFG":"Configurazione partizione",
         "STR_BTN_OK":"OK",
         "STR_BTN_CANCEL":"Annulla",
-        "STR_PRESERVE_SPACE":"Riserva spazio nella parte finale del dispositivo",
+        "STR_PRESERVE_SPACE":"Riserva un po' di spazio alla fine del dispositivo",
         "STR_SPACE_VAL_INVALID":"Quantità di spazio da riservare non valida",
         "STR_MENU_CLEAR":"Rimuovi Ventoy dal dispositivo",
         "STR_CLEAR_SUCCESS":"Rimozione di Ventoy dal dispositivo completata.",
-        "STR_CLEAR_FAILED":"Si è verificato un errore durante la rimozione di Ventoy dal dispositivo.#@Riconnetti il dispositivo e riprova.#@Per i dettagli controlla il file log.txt.",
+        "STR_CLEAR_FAILED":"Si è verificato un errore durante la rimozione di Ventoy dal dispositivo.#@È possibile reinserire il dispositivo USB e riprovare.#@Controlla il file log.txt per i dettagli",
         "STR_MENU_PART_STYLE":"Stile tabella partizioni",
-        "STR_DISK_2TB_MBR_ERROR":"Seleziona GPT per dispositivi con dimensioni maggiori di 2TB",
+        "STR_DISK_2TB_MBR_ERROR":"Seleziona GPT per i dispositivi più grandi di 2TB",
         "STR_SHOW_ALL_DEV":"Visualizza tutti i dispositivi",
         "STR_PART_ALIGN_4KB":"Allinea le partizioni con 4KB",
         "STR_WEB_COMMUNICATION_ERR":"Errore di comunicazione:",
@@ -1581,21 +1605,22 @@
         "STR_WEB_SERVICE_BUSY":"Il servizio è occupato. Riprova più tardi.",
         "STR_MENU_VTSI_CREATE":"Genera file VTSI",
         "STR_VTSI_CREATE_TIP":"Questa volta non scriverà sul dispositivo, ma genererà solo un file VTSI#@Vuoi continuare?",
-        "STR_VTSI_CREATE_SUCCESS":"Creazione file VTSI completata!#@Per scrivere nel dispositivo in modo da completare l'installazione di Ventoy puoi usare Rufus (versione 3.15 o successiva).",
+        "STR_VTSI_CREATE_SUCCESS":"Creazione file VTSI completata!#@Per scriverlo nel dispositivo in modo da completare l'installazione di Ventoy puoi usare Rufus (versione 3.15 o successiva).",
         "STR_VTSI_CREATE_FAILED":"Creazione file VTSI non riuscita.",
         "STR_MENU_PART_RESIZE":"Installazione non distruttiva",
         "STR_PART_RESIZE_TIP":"Ventoy proverà, se possibile, l'installazione non distruttiva.#@Vuoi continuare?",
         "STR_PART_RESIZE_SUCCESS":"Congratulazioni!#@Installazione non distruttiva di Ventoy completata.",
-        "STR_PART_RESIZE_FAILED":"Installazione non distruttiva fallita.#@Per i dettagli controlla il file log.txt.",
-        "STR_PART_RESIZE_UNSUPPORTED":"L'installazione non distruttiva di Ventoy è stata interrotta perché alcune condizioni non possono essere soddisfatte.#@Per i dettagli controlla il file log.txt.",
+        "STR_PART_RESIZE_FAILED":"Installazione non distruttiva fallita.#@Controlla il file log.txt per i dettagli.",
+        "STR_PART_RESIZE_UNSUPPORTED":"L'installazione non distruttiva di Ventoy è stata interrotta perché alcune condizioni non possono essere soddisfatte.#@Controlla il file log.txt per i dettagli.",
         "STR_INSTALL_YES_TIP1":"Attenzione: i dati verranno persi!",
         "STR_INSTALL_YES_TIP2":"Digita YES nella casella di testo qui sotto per confermare che vuoi davvero eseguire un'installazione pulita anziché un aggiornamento.",
         "STR_PART_VENTOY_FS":"File system per la partizione Ventoy",
-        "STR_PART_FS":"File System",
-        "STR_PART_CLUSTER":"Dimensione del grappolo",
+        "STR_PART_FS":"File system",
+        "STR_PART_CLUSTER":"Dimensione del cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valore predefinito di sistema",
         "STR_DONATE":"Donare",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1659,7 +1684,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donirajte",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1723,7 +1749,8 @@
         "STR_PART_CLUSTER":"Klaszter méret",
         "STR_PART_CLUSTER_DEFAULT":"Rendszer alapérték",
         "STR_DONATE":"Adományoz",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1787,19 +1814,20 @@
         "STR_PART_CLUSTER":"簇的大小",
         "STR_PART_CLUSTER_DEFAULT":"系統默認值",
         "STR_DONATE":"捐助",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
         "name":"Serbian Latin (Srpski)",
         "FontFamily":"Courier New",
         "FontSize":16,
-        "Author":"Bojan Maksimović, panickingkernel, Zoran Jankov",
+        "Author":"Bojan Maksimović, panickingkernel, Zoran Jankov, Stefan Šućur",
         
         "STR_ERROR":"Greška",
         "STR_WARNING":"Upozorenje",
         "STR_INFO":"Informacija",
-        "STR_INCORRECT_DIR":"Molim Vas, pokrenite ме u pravom direktorijumu!",
+        "STR_INCORRECT_DIR":"Molim Vas, pokrenite me u pravom direktorijumu!",
         "STR_INCORRECT_TREE_DIR":"Nemojте me pokretati ovde, molim Vas preuzmite objavljeni instalacioni paket i pokrenite me tamo.",
         "STR_DEVICE":"Uređaj",
         "STR_LOCAL_VER":"Ventoy u paketu",
@@ -1807,7 +1835,7 @@
         "STR_STATUS":"Status - SPREMAN",
         "STR_INSTALL":"Instaliraj",
         "STR_UPDATE":"Nadogradi",
-        "STR_UPDATE_TIP":"Nadogradnja je sigurna, ISO fajlovi neće biti promenjeni.#@Nastavi?",
+        "STR_UPDATE_TIP":"Nadogradnja je sigurna, ISO datoteke neće biti promenjene.#@Nastavi?",
         "STR_INSTALL_TIP":"Disk će biti formatiran i svi podaci će biti izgubljeni.#@Nastavi?",
         "STR_INSTALL_TIP2":"Disk će biti formatiran i svi podaci će biti izgubljeni.#@Nastavi? (Dvostruka provera)",
         "STR_INSTALL_SUCCESS":"Čestitam!#@Ventoy je uspešno instaliran na ovom uređaju.",
@@ -1835,30 +1863,31 @@
         "STR_WEB_SERVICE_UNAVAILABLE":"Greška u komunikaciji: Servis nije dostupan",
         "STR_WEB_TOKEN_MISMATCH":"Status demona ažuriran, pokušajte ponovo kasnije.",
         "STR_WEB_SERVICE_BUSY":"Servis je zauzet, pokušajte ponovo kasnije.",
-        "STR_MENU_VTSI_CREATE":"Generate VTSI File",
-        "STR_VTSI_CREATE_TIP":"This time will not write to the device, but only generate a VTSI file#@Continue?",
-        "STR_VTSI_CREATE_SUCCESS":"VTSI file created successfully!#@You can use Rufus(3.15+) to write it to the device so as to complete the installation of Ventoy.",
-        "STR_VTSI_CREATE_FAILED":"VTSI file created failed.",
-        "STR_MENU_PART_RESIZE":"Non-destructive Install",
-        "STR_PART_RESIZE_TIP":"Ventoy will try non-destructive installation if possible. #@Continue?",
-        "STR_PART_RESIZE_SUCCESS":"Congratulations!#@Ventoy non-destructive installation successfully finished.",
-        "STR_PART_RESIZE_FAILED":"Non-destructive installation failed, Check log.txt for details.",
-        "STR_PART_RESIZE_UNSUPPORTED":"Ventoy non-destructive installation stopped because some conditions cannot be met. Check log.txt for details.",
-        "STR_INSTALL_YES_TIP1":"Warning: Data will be lost!",
-        "STR_INSTALL_YES_TIP2":"Please enter YES in the text box below to confirm that you indeed want to do a fresh install instead of upgrade.",
-        "STR_PART_VENTOY_FS":"File System For Ventoy Partition",
-        "STR_PART_FS":"File System",
-        "STR_PART_CLUSTER":"Cluster Size",
-        "STR_PART_CLUSTER_DEFAULT":"System Default Value",
-        "STR_DONATE":"Donate",
-
+        "STR_MENU_VTSI_CREATE":"Stvori VTSI datoteku",
+        "STR_VTSI_CREATE_TIP":"Ovaj put ne pisati na uređaj, nego samo stvoriti VTSI datoteku#@Nastavi?",
+        "STR_VTSI_CREATE_SUCCESS":"VTSI datoteka uspešno stvorena!#@Možete koristiti Rufus(3.15+) da je zapišete na uređaj da biste završili instalaciju Ventoy.",
+        "STR_VTSI_CREATE_FAILED":"Greška u stvaranju VTSI datoteke.",
+        "STR_MENU_PART_RESIZE":"Nedestruktivna instalacija",
+        "STR_PART_RESIZE_TIP":"Ventoy će pokušati nedestruktivnu instalaciju ako je moguće. #@Nastavi?",
+        "STR_PART_RESIZE_SUCCESS":"Čestitam!#@Ventoy nedestruktivna instalacija je bila uspešna.",
+        "STR_PART_RESIZE_FAILED":"Nedestruktivna instalacija je bila neuspešna. Pogledajte log.txt za još detalja.",
+        "STR_PART_RESIZE_UNSUPPORTED":"Ventoy nedestruktivna instalacija se zaustavila jer nisu postignuti neki uslovi. Pogledajte log.txt za još detalja.",
+        "STR_INSTALL_YES_TIP1":"Upozorenje: podaci će biti izgubljeni!",
+        "STR_INSTALL_YES_TIP2":"Molim Vas, unesite YES u polje ispod da biste potvrdili da zaista želite da uradite novu instalaciju umesto nadogradnje.",
+        "STR_PART_VENTOY_FS":"Datotečni sistem za Ventoy particiju",
+        "STR_PART_FS":"Datotoečni sistem",
+        "STR_PART_CLUSTER":"Veličina klastera",
+        "STR_PART_CLUSTER_DEFAULT":"Podrazumevana sistemska vrednost",
+        "STR_DONATE":"Donirajte",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
         "name":"Serbian Cyrillic (Српски)",
         "FontFamily":"Courier New",
         "FontSize":16,
-        "Author":"Bojan Maksimović, panickingkernel, Zoran Jankov",
+        "Author":"Bojan Maksimović, panickingkernel, Zoran Jankov, Stefan Šućur",
 
         "STR_ERROR":"Грешка",
         "STR_WARNING":"Упозорење",
@@ -1871,7 +1900,7 @@
         "STR_STATUS":"Статус - СПРЕМАН",
         "STR_INSTALL":"Инсталирај",
         "STR_UPDATE":"Надогради",
-        "STR_UPDATE_TIP":"Надоградња је сигурна, ISO фајлови неће бити промењени.#@Настави?",
+        "STR_UPDATE_TIP":"Надоградња је сигурна, ISO датотеке неће бити промењене.#@Настави?",
         "STR_INSTALL_TIP":"Диск ће бити форматиран и сви подаци ће бити изгубљени.#@Настави?",
         "STR_INSTALL_TIP2":"Диск ће бити форматиран и сви подаци ће бити изгубљени.#@Настави? (Двострука провера)",
         "STR_INSTALL_SUCCESS":"Честитам!#@Ventoy је успешно инсталиран на овом уређају.",
@@ -1880,15 +1909,15 @@
         "STR_UPDATE_FAILED":"Догодила се грешка током надоградње. Можете извадити и поново убацити USB, па покушати опет. Погледајте log.txt за још детаља.",
         "STR_WAIT_PROCESS":"Одвија се операција, молим Вас сачекајте...",
         "STR_MENU_OPTION":"Опције",
-        "STR_MENU_SECURE_BOOT":"Сигурно уклјучиванје је подржано",
+        "STR_MENU_SECURE_BOOT":"Сигурно укључивање је подржано",
         "STR_MENU_PART_CFG":"Конфигурација партиција",
         "STR_BTN_OK":"У реду",
         "STR_BTN_CANCEL":"Откажи",
-        "STR_PRESERVE_SPACE":"Саћувај нешто простора на крају диска",
+        "STR_PRESERVE_SPACE":"Сачувај нешто простора на крају диска",
         "STR_SPACE_VAL_INVALID":"Неисправна вредност за презервирани простор",
         "STR_MENU_CLEAR":"Обриши Ventoy",
         "STR_CLEAR_SUCCESS":"Ventoy је успешно обрисан са уређаја",
-        "STR_CLEAR_FAILED":"Можете поново убацити USB и покушати опет. Погледајте log.txt за још детаља.",
+        "STR_CLEAR_FAILED":"Догодила се грешка током брисања Ventoy са диска. Можете поново убацити USB и покушати опет. Погледајте log.txt за још детаља.",
         "STR_MENU_PART_STYLE":"Стил партиција",
         "STR_DISK_2TB_MBR_ERROR":"Молим Вас, изаберите GPT за дискове преко 2ТB",
         "STR_SHOW_ALL_DEV":"Прикажи све уређаје",
@@ -1899,23 +1928,24 @@
         "STR_WEB_SERVICE_UNAVAILABLE":"Комуникациона грешка: Сервис је недоступан",
         "STR_WEB_TOKEN_MISMATCH":"Статус демона ажуриран, покушајте поново касније.",
         "STR_WEB_SERVICE_BUSY":"Севис је заузет, покушајте поново касније.",
-        "STR_MENU_VTSI_CREATE":"Generate VTSI File",
-        "STR_VTSI_CREATE_TIP":"This time will not write to the device, but only generate a VTSI file#@Continue?",
-        "STR_VTSI_CREATE_SUCCESS":"VTSI file created successfully!#@You can use Rufus(3.15+) to write it to the device so as to complete the installation of Ventoy.",
-        "STR_VTSI_CREATE_FAILED":"VTSI file created failed.",
-        "STR_MENU_PART_RESIZE":"Non-destructive Install",
-        "STR_PART_RESIZE_TIP":"Ventoy will try non-destructive installation if possible. #@Continue?",
-        "STR_PART_RESIZE_SUCCESS":"Congratulations!#@Ventoy non-destructive installation successfully finished.",
-        "STR_PART_RESIZE_FAILED":"Non-destructive installation failed, Check log.txt for details.",
-        "STR_PART_RESIZE_UNSUPPORTED":"Ventoy non-destructive installation stopped because some conditions cannot be met. Check log.txt for details.",
-        "STR_INSTALL_YES_TIP1":"Warning: Data will be lost!",
-        "STR_INSTALL_YES_TIP2":"Please enter YES in the text box below to confirm that you indeed want to do a fresh install instead of upgrade.",
-        "STR_PART_VENTOY_FS":"File System For Ventoy Partition",
-        "STR_PART_FS":"File System",
-        "STR_PART_CLUSTER":"Cluster Size",
-        "STR_PART_CLUSTER_DEFAULT":"System Default Value",
+        "STR_MENU_VTSI_CREATE":"Створи VTSI датотеку",
+        "STR_VTSI_CREATE_TIP":"Овај пут не писати на уређај, него само створити VTSI датотеку#@Настави?",
+        "STR_VTSI_CREATE_SUCCESS":"VTSI датотека успешно створена!#@Можете користити Rufus(3.15+) да је запишете на уређај да бисте завршили инсталацију Ventoy.",
+        "STR_VTSI_CREATE_FAILED":"Грешка у стварању VTSI датотеке.",
+        "STR_MENU_PART_RESIZE":"Недеструктивна инсталација",
+        "STR_PART_RESIZE_TIP":"Ventoy ће покушати недеструктивну инсталацију ако је могуће. #@Настави?",
+        "STR_PART_RESIZE_SUCCESS":"Честитам!#@Ventoy недеструктивна инсталација је била успешна.",
+        "STR_PART_RESIZE_FAILED":"Недеструктивна инсталација је била неуспешна. Погледајте log.txt за више детаља.",
+        "STR_PART_RESIZE_UNSUPPORTED":"Ventoy недеструктивна инсталација се зауставила јер нису постигнути неки услови. Погледајте log.txt за још детаља.",
+        "STR_INSTALL_YES_TIP1":"Упозорење: подаци ће бити изгубљени!",
+        "STR_INSTALL_YES_TIP2":"Молим Вас, унесите YES у поље испод да бисте потврдили да заиста желите да урадите нову инсталацију уместо надоградње.",
+        "STR_PART_VENTOY_FS":"Датотечни систем за Ventoy партицију",
+        "STR_PART_FS":"Датотечни систем",
+        "STR_PART_CLUSTER":"Величина кластера",
+        "STR_PART_CLUSTER_DEFAULT":"Подразумевана системска вредност",
         "STR_DONATE":"Донирајте",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -1979,7 +2009,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"บริจาค",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2043,7 +2074,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"donere",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2107,7 +2139,8 @@
         "STR_PART_CLUSTER":"Cỡ Cluster",
         "STR_PART_CLUSTER_DEFAULT":"Theo mặc định hệ thống",
         "STR_DONATE":"Thưởng tác giả",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2171,7 +2204,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"paaukoti",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2235,7 +2269,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"донира",
-                
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2299,7 +2334,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"לִתְרוֹם",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2363,7 +2399,8 @@
         "STR_PART_CLUSTER":"Tamanho do cluster",
         "STR_PART_CLUSTER_DEFAULT":"Valor predefinido do sistema",
         "STR_DONATE":"Doar",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2427,7 +2464,8 @@
         "STR_PART_CLUSTER":"Ukuran Kelompok",
         "STR_PART_CLUSTER_DEFAULT":"Nilai Standar Sistem",
         "STR_DONATE":"Donasi sukarela",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2491,7 +2529,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donere",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2555,7 +2594,8 @@
         "STR_PART_CLUSTER":"Розмір кластера",
         "STR_PART_CLUSTER_DEFAULT":"Системне значення за умовчанням",
         "STR_DONATE":"Пожертвуйте",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2619,7 +2659,8 @@
         "STR_PART_CLUSTER":"Μέγεθος συμπλέγματος",
         "STR_PART_CLUSTER_DEFAULT":"Προεπιλεγμένη τιμή συστήματος",
         "STR_DONATE":"Προσφέρω",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     
@@ -2684,7 +2725,8 @@
         "STR_PART_CLUSTER":"Klusterstorlek",
         "STR_PART_CLUSTER_DEFAULT":"Systemets standardvärde",
         "STR_DONATE":"Donera",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2748,7 +2790,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donirajte",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2812,7 +2855,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Дарете",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2876,7 +2920,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Նվիրաբերել",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -2940,7 +2985,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Lahjoittaa",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -3004,7 +3050,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Doa",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -3068,7 +3115,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"Donar",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     
@@ -3133,7 +3181,8 @@
         "STR_PART_CLUSTER":"Cluster Size",
         "STR_PART_CLUSTER_DEFAULT":"System Default Value",
         "STR_DONATE":"შემოწირულობა",
-
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -3197,7 +3246,8 @@
         "STR_PART_CLUSTER":"கொத்து அளவு",
         "STR_PART_CLUSTER_DEFAULT":"கணினி இயல்புநிலை மதிப்பு",
         "STR_DONATE":"தானம் செய்",
-                
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
+        
         "STRXXX":""
     },
     {
@@ -3261,6 +3311,7 @@
         "STR_PART_CLUSTER":"Памер кластара",
         "STR_PART_CLUSTER_DEFAULT":"Сістэмнае значэнне па змаўчанні",
         "STR_DONATE":"Ахвяраваць",
+        "STR_4KN_UNSUPPORTED":"Currently Ventoy does not support 4K native device.",
         
         "STRXXX":""
     }

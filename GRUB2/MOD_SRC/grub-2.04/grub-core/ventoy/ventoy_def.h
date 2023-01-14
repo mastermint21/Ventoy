@@ -62,6 +62,8 @@
 
 #define VTOY_WARNING  "!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!"
 
+#define VTOY_CHKSUM_NUM  4
+
 #define VTOY_PLAT_I386_UEFI     0x49413332
 #define VTOY_PLAT_ARM64_UEFI    0x41413634
 #define VTOY_PLAT_X86_64_UEFI   0x55454649
@@ -115,6 +117,15 @@
     {\
         s++;\
     }
+
+#define VTOY_SKIP_SPACE_NEXT_EX(s, base, initial) \
+    s = base + initial;\
+    while (ventoy_isspace(*s)) \
+    {\
+        s++;\
+    }
+
+#define VTOY_GOTO_END(v)  ret = v; goto end
 
 typedef enum VTOY_FILE_FLT
 {
@@ -628,6 +639,11 @@ typedef struct chk_case_fs_dir
 }chk_case_fs_dir;
 
 int ventoy_str_all_digit(const char *str);
+int ventoy_str_all_alnum(const char *str);
+int ventoy_str_len_alnum(const char *str, int len);
+char * ventoy_str_basename(char *path);
+grub_err_t ventoy_env_int_set(const char *name, int value);
+int ventoy_str_chrcnt(const char *str, char c);
 int ventoy_strcmp(const char *pattern, const char *str);
 int ventoy_strncmp (const char *pattern, const char *str, grub_size_t n);
 void ventoy_fill_os_param(grub_file_t file, ventoy_os_param *param);
@@ -1297,6 +1313,8 @@ grub_err_t ventoy_cmd_cur_menu_lang(grub_extcmd_context_t ctxt, int argc, char *
 extern int ventoy_menu_push_key(int code);
 int ventoy_ctrl_var_init(void);
 int ventoy_global_var_init(void);
+grub_err_t ventoy_cmd_push_menulang(grub_extcmd_context_t ctxt, int argc, char **args);
+grub_err_t ventoy_cmd_pop_menulang(grub_extcmd_context_t ctxt, int argc, char **args);
 
 #endif /* __VENTOY_DEF_H__ */
 

@@ -19,32 +19,28 @@
 
 . /ventoy/hook/ventoy-hook-lib.sh
 
-if [ ! -e /dev/dm-0 ]; then
+if is_ventoy_hook_finished; then
     exit 0
 fi
 
-blkdev_num=$($VTOY_PATH/tool/dmsetup ls | grep ventoy | sed 's/.*(\([0-9][0-9]*\),.*\([0-9][0-9]*\).*/\1:\2/')  
-vtDM=$(ventoy_find_dm_id ${blkdev_num})
+vtlog "####### $0 $* ########"
 
-if [ -e /dev/mapper/ventoy ]; then
-    vtlog "/dev/mapper/ventoy already exist"
-else
-    vtlog "link /dev/$vtDM to /dev/mapper/ventoy"
-    ln -s /dev/$vtDM /dev/mapper/ventoy
+VTPATH_OLD=$PATH; PATH=$BUSYBOX_PATH:$VTOY_PATH/tool:$PATH
+
+wait_for_usb_disk_ready
+
+vtdiskname=$(get_ventoy_disk_name)
+if [ "$vtdiskname" = "unknown" ]; then
+    vtlog "ventoy disk not found"
+    PATH=$VTPATH_OLD
+    exit 0
 fi
 
-VTLABEL=$($BUSYBOX_PATH/blkid /dev/$vtDM | $SED 's/.*LABEL="\([^"]*\)".*/\1/')
-vtlog "VTLABEL=$VTLABEL"
+ventoy_udev_disk_common_hook "${vtdiskname#/dev/}2" "noreplace"
 
-if [ -n "$VTLABEL" ]; then
-    if ! [ -d /dev/disk/by-label ]; then
-        mkdir -p /dev/disk/by-label
-    fi
+ventoy_create_dev_ventoy_part
+mdev -s
 
-    if [ -e "/dev/disk/by-label/$VTLABEL" ]; then
-        vtlog "/dev/disk/by-label/$VTLABEL already exist"
-    else
-        vtlog "link /dev/$vtDM to /dev/disk/by-label/$VTLABEL"
-        ln -s /dev/$vtDM "/dev/disk/by-label/$VTLABEL"
-    fi
-fi
+PATH=$VTPATH_OLD
+
+set_ventoy_hook_finish
