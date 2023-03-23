@@ -2202,11 +2202,6 @@ int ventoy_fill_data(grub_uint32_t buflen, char *buffer)
     puint[1] = grub_swap_bytes32(0x5f6c6963);
     ventoy_set_env(name, guidstr);
 
-    FILE *file;
-    file = fopen("test.txt", "w"); // opens the file in write mode
-    fprintf(file, "Variable 1: %s\nVariable 2: %s\nVariable 3: %d", name, guidstr, len); // writes the text to the file
-    fclose(file); // closes the file
-
     return len;
 }
 
