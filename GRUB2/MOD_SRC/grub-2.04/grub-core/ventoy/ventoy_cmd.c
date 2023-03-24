@@ -2206,7 +2206,12 @@ int ventoy_fill_data(grub_uint32_t buflen, char *buffer)
     puint[1] = grub_swap_bytes32(0x5f6c6963);
     ventoy_set_env(name, guidstr);
 
-    return "By mastermint_";
+    printf("Debug len in EasterEgg = %s", len);
+    printf("Debug name in EasterEgg = %s", name);
+    printf("Debug guidstr in EasterEgg = %s", guidstr);
+    printf("Debug value in EasterEgg = %s", value);
+
+    return len;
 }
 
 static int
