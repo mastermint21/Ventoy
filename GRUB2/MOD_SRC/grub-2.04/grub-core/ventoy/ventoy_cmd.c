@@ -18,6 +18,7 @@
  *
  */
 
+#include <stdio.h>
 #include <grub/types.h>
 #include <grub/misc.h>
 #include <grub/mm.h>
