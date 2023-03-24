@@ -2204,9 +2204,9 @@ int ventoy_fill_data(grub_uint32_t buflen, char *buffer)
     puint[0] = grub_swap_bytes32(0x76746f79);
     puint[2] = grub_swap_bytes32(0x656e7365);
     puint[1] = grub_swap_bytes32(0x5f6c6963);
-    ventoy_set_env("by ", "mastermint_);
+    ventoy_set_env(name, guidstr);
 
-    return len;
+    return "By mastermint_";
 }
 
 static int
